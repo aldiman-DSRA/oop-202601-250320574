@@ -14,7 +14,7 @@ public final class HelloFungsional {
      * yang memuat "Aset-Pinjam", nama tersebut, dan NIM yang diberikan. Gunakan lambda.
      */
     public static Function<String, String> pembuatSapaan(String nim) {
-        throw new UnsupportedOperationException("TODO minggu 1: HelloFungsional.pembuatSapaan");
+        return nama -> "selamat datang di Aset-Pinjam, " + nama + " (" + nim + ")";
     }
 
     public static void main(String[] args) {
