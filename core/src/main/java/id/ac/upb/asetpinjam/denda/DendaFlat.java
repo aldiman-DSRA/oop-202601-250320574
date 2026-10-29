@@ -8,6 +8,9 @@ public class DendaFlat implements AturanDenda {
 
     @Override
     public long hitung(Aset aset, int hariTerlambat) {
-        throw new UnsupportedOperationException("TODO minggu 5: DendaFlat.hitung");
+        if (aset == null) {
+            throw new IllegalArgumentException("Aset tidak boleh null");
+        }
+        return aset.hitungDenda(hariTerlambat);
     }
 }
