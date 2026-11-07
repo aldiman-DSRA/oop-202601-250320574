@@ -1,23 +1,52 @@
 package id.ac.upb.asetpinjam.mahasiswa;
 
-import org.junit.jupiter.api.Disabled;
+import static id.ac.upb.asetpinjam.TestSupport.pinjam;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import id.ac.upb.asetpinjam.TestSupport;
+import id.ac.upb.asetpinjam.config.Varian;
+import id.ac.upb.asetpinjam.jadwal.JadwalPeminjaman;
+import id.ac.upb.asetpinjam.model.Peminjaman;
 import org.junit.jupiter.api.Test;
 
 /**
- * FOLDER INI MILIK ANDA. Tulis tes Anda sendiri di sini (minggu 7 dan seterusnya).
- *
- * <p>Tes dosen sengaja tidak menentukan: apakah peminjaman 09:00-11:00 dan 11:00-13:00 pada aset yang sama
- * bentrok? Putuskan, catat alasannya di docs/asumsi.md, lalu tuliskan tesnya di sini.
- * Hapus @Disabled setelah Anda mengisinya.
- *
- * <p>Syarat minggu 10: folder ini memuat minimal 8 tes (tidak termasuk contoh bawaan ini).
+ * Pengujian mahasiswa untuk keputusan batas waktu bentrok peminjaman.
+ * Sesuai keputusan pada docs/asumsi.md (A-01), peminjaman yang selesai tepat saat
+ * peminjaman lain dimulai pada aset yang sama (back-to-back) adalah TIDAK BENTROK.
  */
 class BatasBentrokTest {
 
     @Test
-    @Disabled("Isi dengan keputusan Anda tentang batas waktu bentrok")
     void selesaiSamaDenganMulai() {
-        // TODO: buat dua peminjaman pada aset yang sama, satu selesai tepat saat yang lain mulai,
-        // lalu nyatakan hasil yang Anda putuskan dengan assertThat(...).
+        JadwalPeminjaman jadwal = new JadwalPeminjaman(Varian.aktif().kuotaLaptop);
+        var peminjam1 = TestSupport.peminjam("P-1");
+        var peminjam2 = TestSupport.peminjam("P-2");
+        var ruang = TestSupport.ruang("R-1");
+
+        // Peminjaman 1: 09:00 - 11:00
+        jadwal.tambah(pinjam("1", peminjam1, ruang, 9, 11));
+
+        // Peminjaman 2: 11:00 - 13:00 (mulai tepat saat peminjaman 1 selesai)
+        Peminjaman peminjaman2 = pinjam("2", peminjam2, ruang, 11, 13);
+
+        // Keputusan A-01: Tidak bentrok (interval [09:00, 11:00) dan [11:00, 13:00) tidak bertumpang tindih)
+        assertThat(jadwal.bentrok(peminjaman2)).isFalse();
+    }
+
+    @Test
+    void mulaiSamaDenganSelesaiPeminjamanSetelahnya() {
+        JadwalPeminjaman jadwal = new JadwalPeminjaman(Varian.aktif().kuotaLaptop);
+        var peminjam1 = TestSupport.peminjam("P-1");
+        var peminjam2 = TestSupport.peminjam("P-2");
+        var ruang = TestSupport.ruang("R-1");
+
+        // Peminjaman di jadwal: 13:00 - 15:00
+        jadwal.tambah(pinjam("1", peminjam1, ruang, 13, 15));
+
+        // Peminjaman baru: 11:00 - 13:00 (selesai tepat saat peminjaman di jadwal mulai)
+        Peminjaman peminjamanSebelumnya = pinjam("2", peminjam2, ruang, 11, 13);
+
+        // Keputusan A-01: Tidak bentrok
+        assertThat(jadwal.bentrok(peminjamanSebelumnya)).isFalse();
     }
 }
