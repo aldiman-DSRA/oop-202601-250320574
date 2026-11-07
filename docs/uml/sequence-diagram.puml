@@ -1,0 +1,95 @@
+@startuml sequence-diagram
+skinparam responseMessageBelowArrow true
+skinparam shadowing false
+skinparam monochrome false
+autonumber
+
+actor "Peminjam" as peminjam
+participant "jadwal : JadwalPeminjaman" as jadwal
+participant "baru : Peminjaman" as baru
+participant "aset : Aset" as aset
+participant "existing : Peminjaman" as existing
+collections "daftar : List<Peminjaman>" as daftar
+
+peminjam -> jadwal : ajukan(baru)
+activate jadwal
+
+jadwal -> baru : getAset()
+activate baru
+baru --> jadwal : aset
+deactivate baru
+
+jadwal -> aset : bisaDipinjam()
+activate aset
+aset --> jadwal : true (status TERSEDIA & kondisi != RUSAK_BERAT)
+deactivate aset
+
+jadwal -> jadwal : bentrok(baru)
+activate jadwal
+jadwal -> baru : getMulai()
+activate baru
+baru --> jadwal : mulaiBaru
+deactivate baru
+
+jadwal -> baru : getSelesai()
+activate baru
+baru --> jadwal : selesaiBaru
+deactivate baru
+
+loop untuk setiap peminjaman yang sudah ada
+    jadwal -> daftar : get(i)
+    activate daftar
+    daftar --> jadwal : existing
+    deactivate daftar
+
+    jadwal -> existing : getAset()
+    activate existing
+    existing --> jadwal : asetExisting
+    deactivate existing
+
+    opt asetExisting.getKode() == aset.getKode()
+        jadwal -> existing : getMulai()
+        activate existing
+        existing --> jadwal : mulaiExisting
+        deactivate existing
+
+        jadwal -> existing : getSelesai()
+        activate existing
+        existing --> jadwal : selesaiExisting
+        deactivate existing
+    end
+end
+deactivate jadwal
+
+alt Skenario Bentrok: waktu tumpang tindih pada aset yang sama
+    note over jadwal
+        Kondisi bentrok terpenuhi:
+        mulaiBaru < selesaiExisting AND selesaiBaru > mulaiExisting
+    end note
+    create participant "e : PeminjamanBentrokException" as ex
+    jadwal -> ex : <<create>>("Peminjaman bentrok pada aset: " + kode)
+    jadwal --> peminjam : throw PeminjamanBentrokException
+    note right of peminjam
+        Pengajuan ditolak.
+        Data tidak disimpan ke dalam daftar.
+    end note
+
+else Skenario Sukses: tidak ada jadwal yang bentrok
+    note over jadwal
+        Tidak ada jadwal bentrok pada aset yang sama.
+        Pemeriksaan kuota laptop terpenuhi (jika aset berupa laptop).
+    end note
+    jadwal -> daftar : add(baru)
+    activate daftar
+    daftar --> jadwal : true
+    deactivate daftar
+
+    jadwal --> peminjam : void (sukses, status DIAJUKAN)
+    note right of peminjam
+        Peminjaman berhasil diajukan
+        dan tercatat di jadwal.
+    end note
+end
+
+deactivate jadwal
+@enduml

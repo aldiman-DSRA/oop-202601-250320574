@@ -1,0 +1,262 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 860" width="100%" height="100%" style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <style>
+      .pkg-title { font-size: 14px; font-weight: bold; fill: #475569; }
+      .cls-header { font-size: 14px; font-weight: bold; fill: #1e293b; text-anchor: middle; }
+      .cls-sub { font-size: 11px; font-style: italic; fill: #64748b; text-anchor: middle; }
+      .cls-item { font-size: 12px; fill: #334155; font-family: 'Consolas', 'Courier New', monospace; }
+      .cls-box { fill: #f8fafc; stroke: #3b82f6; stroke-width: 1.5; rx: 6; ry: 6; }
+      .pkg-box { fill: #f1f5f9; stroke: #cbd5e1; stroke-width: 1.5; stroke-dasharray: 4,4; rx: 8; ry: 8; }
+      .line { stroke: #475569; stroke-width: 1.5; fill: none; }
+      .arrow { fill: #475569; }
+      .inherit-tri { fill: #ffffff; stroke: #475569; stroke-width: 1.5; }
+      .diamond { fill: #ffffff; stroke: #475569; stroke-width: 1.5; }
+      .mult { font-size: 11px; font-weight: 600; fill: #2563eb; }
+      .rel-label { font-size: 11px; fill: #64748b; text-anchor: middle; }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#475569" />
+    </marker>
+    <marker id="generalization" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#ffffff" stroke="#475569" stroke-width="1.5" />
+    </marker>
+    <marker id="realization" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#ffffff" stroke="#475569" stroke-width="1.5" />
+    </marker>
+    <marker id="aggregation" markerWidth="14" markerHeight="10" refX="1" refY="5" orient="auto">
+      <polygon points="7 0, 14 5, 7 10, 0 5" fill="#ffffff" stroke="#475569" stroke-width="1.5" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="550" y="32" font-size="20" font-weight="bold" fill="#0f172a" text-anchor="middle">Aset-Pinjam System - Class Diagram</text>
+
+  <!-- Package: id.ac.upb.asetpinjam.kontrak -->
+  <rect x="30" y="55" width="480" height="155" class="pkg-box" />
+  <text x="45" y="75" class="pkg-title">id.ac.upb.asetpinjam.kontrak</text>
+
+  <!-- Interface: DapatDipinjam -->
+  <g transform="translate(45, 90)">
+    <rect width="210" height="90" class="cls-box" />
+    <line x1="0" y1="35" x2="210" y2="35" stroke="#93c5fd" stroke-width="1" />
+    <line x1="0" y1="45" x2="210" y2="45" stroke="#93c5fd" stroke-width="1" />
+    <text x="105" y="16" class="cls-sub">&lt;&lt;interface&gt;&gt;</text>
+    <text x="105" y="30" class="cls-header">DapatDipinjam</text>
+    <text x="10" y="65" class="cls-item">+ bisaDipinjam() : boolean</text>
+  </g>
+
+  <!-- Interface: AturanDenda -->
+  <g transform="translate(280, 90)">
+    <rect width="215" height="105" class="cls-box" />
+    <line x1="0" y1="35" x2="215" y2="35" stroke="#93c5fd" stroke-width="1" />
+    <line x1="0" y1="45" x2="215" y2="45" stroke="#93c5fd" stroke-width="1" />
+    <text x="107" y="16" class="cls-sub">&lt;&lt;interface&gt;&gt;</text>
+    <text x="107" y="30" class="cls-header">AturanDenda</text>
+    <text x="10" y="65" class="cls-item">+ hitung(aset : Aset,</text>
+    <text x="25" y="80" class="cls-item">  hari : int) : long</text>
+  </g>
+
+  <!-- Package: id.ac.upb.asetpinjam.denda -->
+  <rect x="540" y="55" width="530" height="155" class="pkg-box" />
+  <text x="555" y="75" class="pkg-title">id.ac.upb.asetpinjam.denda</text>
+
+  <!-- DendaFlat -->
+  <g transform="translate(555, 90)">
+    <rect width="155" height="80" class="cls-box" />
+    <line x1="0" y1="28" x2="155" y2="28" stroke="#93c5fd" stroke-width="1" />
+    <line x1="0" y1="38" x2="155" y2="38" stroke="#93c5fd" stroke-width="1" />
+    <text x="77" y="20" class="cls-header">DendaFlat</text>
+    <text x="10" y="58" class="cls-item">+ hitung(...) : long</text>
+  </g>
+
+  <!-- DendaProgresif -->
+  <g transform="translate(725, 90)">
+    <rect width="165" height="80" class="cls-box" />
+    <line x1="0" y1="28" x2="165" y2="28" stroke="#93c5fd" stroke-width="1" />
+    <line x1="0" y1="38" x2="165" y2="38" stroke="#93c5fd" stroke-width="1" />
+    <text x="82" y="20" class="cls-header">DendaProgresif</text>
+    <text x="10" y="58" class="cls-item">+ hitung(...) : long</text>
+  </g>
+
+  <!-- LayananDenda -->
+  <g transform="translate(905, 90)">
+    <rect width="150" height="105" class="cls-box" />
+    <line x1="0" y1="28" x2="150" y2="28" stroke="#93c5fd" stroke-width="1" />
+    <text x="75" y="20" class="cls-header">LayananDenda</text>
+    <text x="8" y="46" class="cls-item">- aturan : AturanDenda</text>
+    <line x1="0" y1="56" x2="150" y2="56" stroke="#93c5fd" stroke-width="1" />
+    <text x="8" y="74" class="cls-item">+ LayananDenda(...)</text>
+    <text x="8" y="90" class="cls-item">+ hitung(...) : long</text>
+  </g>
+
+  <!-- Package: id.ac.upb.asetpinjam.model -->
+  <rect x="30" y="235" width="1040" height="385" class="pkg-box" />
+  <text x="45" y="255" class="pkg-title">id.ac.upb.asetpinjam.model</text>
+
+  <!-- Abstract Class: Aset -->
+  <g transform="translate(45, 275)">
+    <rect width="250" height="190" class="cls-box" />
+    <text x="125" y="18" class="cls-sub">&lt;&lt;abstract&gt;&gt;</text>
+    <text x="125" y="32" class="cls-header">Aset</text>
+    <line x1="0" y1="38" x2="250" y2="38" stroke="#93c5fd" stroke-width="1" />
+    <text x="10" y="54" class="cls-item">- kode : String</text>
+    <text x="10" y="70" class="cls-item">- nama : String</text>
+    <text x="10" y="86" class="cls-item">- status : StatusAset</text>
+    <text x="10" y="102" class="cls-item">- kondisi : Kondisi</text>
+    <line x1="0" y1="110" x2="250" y2="110" stroke="#93c5fd" stroke-width="1" />
+    <text x="10" y="126" class="cls-item">+ getKode() : String</text>
+    <text x="10" y="142" class="cls-item">+ bisaDipinjam() : boolean</text>
+    <text x="10" y="158" class="cls-item">+ getJenis()* : JenisAset</text>
+    <text x="10" y="174" class="cls-item">+ hitungDenda(hari : int)* : long</text>
+  </g>
+
+  <!-- Subclasses of Aset -->
+  <!-- Ruang -->
+  <g transform="translate(45, 500)">
+    <rect width="200" height="100" class="cls-box" />
+    <text x="100" y="22" class="cls-header">Ruang</text>
+    <line x1="0" y1="30" x2="200" y2="30" stroke="#93c5fd" stroke-width="1" />
+    <text x="10" y="48" class="cls-item">- kapasitas : int</text>
+    <line x1="0" y1="56" x2="200" y2="56" stroke="#93c5fd" stroke-width="1" />
+    <text x="10" y="74" class="cls-item">+ getKapasitas() : int</text>
+    <text x="10" y="90" class="cls-item">+ hitungDenda(...) : long</text>
+  </g>
+
+  <!-- Laptop -->
+  <g transform="translate(260, 500)">
+    <rect width="240" height="105" class="cls-box" />
+    <text x="120" y="22" class="cls-header">Laptop</text>
+    <line x1="0" y1="30" x2="240" y2="30" stroke="#93c5fd" stroke-width="1" />
+    <text x="10" y="46" class="cls-item">- spesifikasi : String</text>
+    <text x="10" y="60" class="cls-item">- nomorInventaris : String</text>
+    <line x1="0" y1="68" x2="240" y2="68" stroke="#93c5fd" stroke-width="1" />
+    <text x="10" y="84" class="cls-item">+ getNomorInventaris() : String</text>
+    <text x="10" y="98" class="cls-item">+ hitungDenda(...) : long</text>
+  </g>
+
+  <!-- AlatLab -->
+  <g transform="translate(515, 500)">
+    <rect width="245" height="105" class="cls-box" />
+    <text x="122" y="22" class="cls-header">AlatLab</text>
+    <line x1="0" y1="30" x2="245" y2="30" stroke="#93c5fd" stroke-width="1" />
+    <text x="10" y="46" class="cls-item">- laboratorium : String</text>
+    <text x="10" y="60" class="cls-item">- tingkatRisiko : TingkatRisiko</text>
+    <line x1="0" y1="68" x2="245" y2="68" stroke="#93c5fd" stroke-width="1" />
+    <text x="10" y="84" class="cls-item">+ getTingkatRisiko() : Enum</text>
+    <text x="10" y="98" class="cls-item">+ hitungDenda(...) : long</text>
+  </g>
+
+  <!-- Record Peminjam -->
+  <g transform="translate(860, 275)">
+    <rect width="190" height="100" class="cls-box" />
+    <text x="95" y="18" class="cls-sub">&lt;&lt;record&gt;&gt;</text>
+    <text x="95" y="32" class="cls-header">Peminjam</text>
+    <line x1="0" y1="38" x2="190" y2="38" stroke="#93c5fd" stroke-width="1" />
+    <text x="10" y="56" class="cls-item">- id : String</text>
+    <text x="10" y="72" class="cls-item">- nama : String</text>
+    <line x1="0" y1="80" x2="190" y2="80" stroke="#93c5fd" stroke-width="1" />
+    <text x="10" y="94" class="cls-item">+ id() : String, nama() : String</text>
+  </g>
+
+  <!-- Peminjaman -->
+  <g transform="translate(480, 275)">
+    <rect width="290" height="190" class="cls-box" />
+    <text x="145" y="24" class="cls-header">Peminjaman</text>
+    <line x1="0" y1="32" x2="290" y2="32" stroke="#93c5fd" stroke-width="1" />
+    <text x="10" y="48" class="cls-item">- id : String</text>
+    <text x="10" y="64" class="cls-item">- peminjam : Peminjam</text>
+    <text x="10" y="80" class="cls-item">- aset : Aset</text>
+    <text x="10" y="96" class="cls-item">- mulai : LocalDateTime</text>
+    <text x="10" y="112" class="cls-item">- selesai : LocalDateTime</text>
+    <text x="10" y="128" class="cls-item">- status : StatusPeminjaman</text>
+    <line x1="0" y1="136" x2="290" y2="136" stroke="#93c5fd" stroke-width="1" />
+    <text x="10" y="152" class="cls-item">+ getId() : String, getAset() : Aset</text>
+    <text x="10" y="168" class="cls-item">+ ubahStatus(StatusPeminjaman) : void</text>
+    <text x="10" y="184" class="cls-item">+ getStatus() : StatusPeminjaman</text>
+  </g>
+
+  <!-- Package: id.ac.upb.asetpinjam.katalog -->
+  <rect x="30" y="645" width="480" height="190" class="pkg-box" />
+  <text x="45" y="665" class="pkg-title">id.ac.upb.asetpinjam.katalog</text>
+
+  <!-- KatalogAset -->
+  <g transform="translate(45, 680)">
+    <rect width="450" height="135" class="cls-box" />
+    <text x="225" y="24" class="cls-header">KatalogAset</text>
+    <line x1="0" y1="32" x2="450" y2="32" stroke="#93c5fd" stroke-width="1" />
+    <text x="10" y="50" class="cls-item">- daftar : List&lt;Aset&gt;</text>
+    <line x1="0" y1="60" x2="450" y2="60" stroke="#93c5fd" stroke-width="1" />
+    <text x="10" y="78" class="cls-item">+ tambah(aset : Aset) : void</text>
+    <text x="10" y="94" class="cls-item">+ semua() : List&lt;Aset&gt;</text>
+    <text x="10" y="110" class="cls-item">+ cari(kata : String) : List&lt;Aset&gt;</text>
+    <text x="10" y="126" class="cls-item">+ cari(kata : String, jenis : JenisAset) : List&lt;Aset&gt;</text>
+  </g>
+
+  <!-- Package: id.ac.upb.asetpinjam.jadwal -->
+  <rect x="540" y="645" width="530" height="190" class="pkg-box" />
+  <text x="555" y="665" class="pkg-title">id.ac.upb.asetpinjam.jadwal</text>
+
+  <!-- JadwalPeminjaman -->
+  <g transform="translate(555, 680)">
+    <rect width="500" height="145" class="cls-box" />
+    <text x="250" y="24" class="cls-header">JadwalPeminjaman</text>
+    <line x1="0" y1="32" x2="500" y2="32" stroke="#93c5fd" stroke-width="1" />
+    <text x="10" y="50" class="cls-item">- daftar : List&lt;Peminjaman&gt;</text>
+    <text x="10" y="66" class="cls-item">- kuotaLaptop : int</text>
+    <line x1="0" y1="74" x2="500" y2="74" stroke="#93c5fd" stroke-width="1" />
+    <text x="10" y="90" class="cls-item">+ tambah(p : Peminjaman) : void</text>
+    <text x="10" y="106" class="cls-item">+ bentrok(baru : Peminjaman) : boolean</text>
+    <text x="10" y="122" class="cls-item">+ ajukan(baru : Peminjaman) : void</text>
+    <text x="10" y="138" class="cls-item">+ semuaUrutMulai() : List&lt;Peminjaman&gt;, perAset() : Map</text>
+  </g>
+
+  <!-- Connectors -->
+  <!-- Aset implements DapatDipinjam -->
+  <path d="M 150 275 L 150 180" class="line" stroke-dasharray="4,4" marker-end="url(#realization)" />
+
+  <!-- DendaFlat implements AturanDenda -->
+  <path d="M 632 90 L 632 75 L 430 75 L 430 90" class="line" stroke-dasharray="4,4" marker-end="url(#realization)" />
+
+  <!-- DendaProgresif implements AturanDenda -->
+  <path d="M 807 90 L 807 68 L 460 68 L 460 90" class="line" stroke-dasharray="4,4" marker-end="url(#realization)" />
+
+  <!-- LayananDenda aggregates AturanDenda -->
+  <path d="M 905 140 L 495 140" class="line" marker-start="url(#aggregation)" marker-end="url(#arrowhead)" />
+  <text x="880" y="132" class="mult">1</text>
+  <text x="515" y="132" class="mult">1</text>
+  <text x="700" y="132" class="rel-label">aturan</text>
+
+  <!-- Ruang extends Aset -->
+  <path d="M 145 500 L 145 465" class="line" marker-end="url(#generalization)" />
+
+  <!-- Laptop extends Aset -->
+  <path d="M 380 500 L 380 475 L 180 475 L 180 465" class="line" marker-end="url(#generalization)" />
+
+  <!-- AlatLab extends Aset -->
+  <path d="M 635 500 L 635 480 L 210 480 L 210 465" class="line" marker-end="url(#generalization)" />
+
+  <!-- Peminjaman to Aset -->
+  <path d="M 480 350 L 295 350" class="line" marker-end="url(#arrowhead)" />
+  <text x="465" y="342" class="mult">*</text>
+  <text x="310" y="342" class="mult">1</text>
+  <text x="385" y="342" class="rel-label">aset</text>
+
+  <!-- Peminjaman to Peminjam -->
+  <path d="M 770 340 L 860 340" class="line" marker-end="url(#arrowhead)" />
+  <text x="780" y="332" class="mult">*</text>
+  <text x="845" y="332" class="mult">1</text>
+  <text x="815" y="332" class="rel-label">peminjam</text>
+
+  <!-- KatalogAset aggregates Aset -->
+  <path d="M 170 680 L 170 465" class="line" marker-start="url(#aggregation)" marker-end="url(#arrowhead)" />
+  <text x="180" y="665" class="mult">1</text>
+  <text x="180" y="485" class="mult">*</text>
+  <text x="135" y="630" class="rel-label">daftar</text>
+
+  <!-- JadwalPeminjaman aggregates Peminjaman -->
+  <path d="M 680 680 L 680 465" class="line" marker-start="url(#aggregation)" marker-end="url(#arrowhead)" />
+  <text x="690" y="665" class="mult">1</text>
+  <text x="690" y="485" class="mult">*</text>
+  <text x="645" y="630" class="rel-label">daftar</text>
+
+</svg>

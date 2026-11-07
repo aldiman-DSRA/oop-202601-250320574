@@ -4,19 +4,23 @@ import id.ac.upb.asetpinjam.kontrak.AturanDenda;
 import id.ac.upb.asetpinjam.model.Aset;
 
 /**
- * Minggu 10: konteks pola Strategy. Aturan denda DISUNTIKKAN lewat konstruktor
- * (bukan dibuat di dalam kelas ini), sehingga bisa diganti tanpa mengubah kelas ini.
+ * Konteks pola Strategy dan demonstrasi prinsip SOLID (DIP dan OCP).
+ * Aturan denda DISUNTIKKAN lewat konstruktor (bukan dibuat di dalam kelas ini),
+ * sehingga kelas ini bergantung pada abstraksi (AturanDenda) bukan implementasi konkret.
  */
 public class LayananDenda {
 
-    // TODO minggu 10: simpan AturanDenda dalam field final.
+    private final AturanDenda aturan;
 
-    /** TODO minggu 10: aturan tidak boleh null (IllegalArgumentException). */
+    /** Aturan tidak boleh null (IllegalArgumentException). */
     public LayananDenda(AturanDenda aturan) {
-        throw new UnsupportedOperationException("TODO minggu 10: konstruktor LayananDenda");
+        if (aturan == null) {
+            throw new IllegalArgumentException("Aturan denda tidak boleh null");
+        }
+        this.aturan = aturan;
     }
 
     public long hitung(Aset aset, int hariTerlambat) {
-        throw new UnsupportedOperationException("TODO minggu 10: LayananDenda.hitung");
+        return aturan.hitung(aset, hariTerlambat);
     }
 }

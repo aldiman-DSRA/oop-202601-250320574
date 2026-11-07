@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 780" width="100%" height="100%" style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <style>
+      .title { font-size: 18px; font-weight: bold; fill: #0f172a; text-anchor: middle; }
+      .participant-box { fill: #eff6ff; stroke: #3b82f6; stroke-width: 1.5; rx: 5; ry: 5; }
+      .participant-text { font-size: 13px; font-weight: 600; fill: #1e3a8a; text-anchor: middle; }
+      .lifeline { stroke: #94a3b8; stroke-width: 1.5; stroke-dasharray: 4,4; }
+      .activation { fill: #dbeafe; stroke: #2563eb; stroke-width: 1.5; }
+      .msg-line { stroke: #1e293b; stroke-width: 1.5; fill: none; }
+      .msg-ret { stroke: #475569; stroke-width: 1.5; stroke-dasharray: 4,4; fill: none; }
+      .msg-err { stroke: #dc2626; stroke-width: 1.5; stroke-dasharray: 4,4; fill: none; }
+      .msg-text { font-size: 12px; fill: #0f172a; font-family: 'Consolas', 'Courier New', monospace; }
+      .msg-num { font-size: 11px; font-weight: bold; fill: #2563eb; }
+      .alt-box { fill: #f8fafc; stroke: #64748b; stroke-width: 1.5; }
+      .alt-tag { fill: #e2e8f0; stroke: #64748b; stroke-width: 1; }
+      .alt-text { font-size: 12px; font-weight: bold; fill: #334155; }
+      .alt-cond { font-size: 11px; font-style: italic; fill: #475569; }
+      .note-box { fill: #fef3c7; stroke: #f59e0b; stroke-width: 1; rx: 4; ry: 4; }
+      .note-text { font-size: 11px; fill: #92400e; }
+    </style>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#1e293b" />
+    </marker>
+    <marker id="arrow-ret" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#475569" />
+    </marker>
+    <marker id="arrow-err" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#dc2626" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="475" y="30" class="title">Sequence Diagram: Pengajuan Peminjaman (JadwalPeminjaman.ajukan)</text>
+
+  <!-- Participants -->
+  <!-- Peminjam (X=60) -->
+  <rect x="15" y="55" width="90" height="36" class="participant-box" />
+  <text x="60" y="78" class="participant-text">Peminjam</text>
+  <line x1="60" y1="91" x2="60" y2="730" class="lifeline" />
+
+  <!-- JadwalPeminjaman (X=230) -->
+  <rect x="160" y="55" width="140" height="36" class="participant-box" />
+  <text x="230" y="78" class="participant-text">jadwal: Jadwal</text>
+  <line x1="230" y1="91" x2="230" y2="730" class="lifeline" />
+
+  <!-- baru: Peminjaman (X=420) -->
+  <rect x="360" y="55" width="120" height="36" class="participant-box" />
+  <text x="420" y="78" class="participant-text">baru: Peminjaman</text>
+  <line x1="420" y1="91" x2="420" y2="730" class="lifeline" />
+
+  <!-- aset: Aset (X=590) -->
+  <rect x="540" y="55" width="100" height="36" class="participant-box" />
+  <text x="590" y="78" class="participant-text">aset: Aset</text>
+  <line x1="590" y1="91" x2="590" y2="730" class="lifeline" />
+
+  <!-- existing: Peminjaman (X=740) -->
+  <rect x="680" y="55" width="120" height="36" class="participant-box" />
+  <text x="740" y="78" class="participant-text">existing: Peminjaman</text>
+  <line x1="740" y1="91" x2="740" y2="730" class="lifeline" />
+
+  <!-- daftar: List<Peminjaman> (X=880) -->
+  <rect x="830" y="55" width="100" height="36" class="participant-box" />
+  <text x="880" y="78" class="participant-text">daftar: List</text>
+  <line x1="880" y1="91" x2="880" y2="730" class="lifeline" />
+
+  <!-- Activation bars -->
+  <rect x="225" y="115" width="10" height="600" class="activation" />
+  <rect x="415" y="130" width="10" height="25" class="activation" />
+  <rect x="585" y="170" width="10" height="25" class="activation" />
+  <rect x="415" y="240" width="10" height="40" class="activation" />
+  <rect x="735" y="300" width="10" height="35" class="activation" />
+  <rect x="875" y="650" width="10" height="30" class="activation" />
+
+  <!-- Step 1: ajukan(baru) -->
+  <line x1="60" y1="115" x2="225" y2="115" class="msg-line" marker-end="url(#arrow)" />
+  <text x="75" y="110" class="msg-text">1: ajukan(baru)</text>
+
+  <!-- Step 2: getAset() -->
+  <line x1="235" y1="135" x2="415" y2="135" class="msg-line" marker-end="url(#arrow)" />
+  <text x="250" y="130" class="msg-text">2: getAset()</text>
+  <line x1="415" y1="155" x2="235" y2="155" class="msg-ret" marker-end="url(#arrow-ret)" />
+  <text x="250" y="150" class="msg-text">3: return aset</text>
+
+  <!-- Step 4: bisaDipinjam() -->
+  <line x1="235" y1="175" x2="585" y2="175" class="msg-line" marker-end="url(#arrow)" />
+  <text x="250" y="170" class="msg-text">4: bisaDipinjam()</text>
+  <line x1="585" y1="195" x2="235" y2="195" class="msg-ret" marker-end="url(#arrow-ret)" />
+  <text x="250" y="190" class="msg-text">5: return true (TERSEDIA &amp; !RUSAK_BERAT)</text>
+
+  <!-- Step 6: bentrok(baru) internal check -->
+  <path d="M 235 215 L 265 215 L 265 235 L 235 235" class="msg-line" marker-end="url(#arrow)" />
+  <text x="270" y="228" class="msg-text">6: bentrok(baru)</text>
+
+  <!-- Step 7: get interval -->
+  <line x1="235" y1="245" x2="415" y2="245" class="msg-line" marker-end="url(#arrow)" />
+  <text x="250" y="240" class="msg-text">7: getMulai(), getSelesai()</text>
+  <line x1="415" y1="275" x2="235" y2="275" class="msg-ret" marker-end="url(#arrow-ret)" />
+  <text x="250" y="270" class="msg-text">8: return interval [mulaiBaru, selesaiBaru]</text>
+
+  <!-- Step 9: loop check existing -->
+  <line x1="235" y1="305" x2="735" y2="305" class="msg-line" marker-end="url(#arrow)" />
+  <text x="250" y="300" class="msg-text">9: [loop] periksa interval existing pada aset yang sama</text>
+  <line x1="735" y1="330" x2="235" y2="330" class="msg-ret" marker-end="url(#arrow-ret)" />
+  <text x="250" y="325" class="msg-text">10: return [mulaiExisting, selesaiExisting]</text>
+
+  <!-- Fragment alt -->
+  <rect x="40" y="360" width="880" height="340" class="alt-box" />
+  <rect x="40" y="360" width="60" height="22" class="alt-tag" />
+  <text x="55" y="376" class="alt-text">alt</text>
+
+  <!-- Branch 1: Skenario Bentrok -->
+  <text x="110" y="376" class="alt-cond">[Skenario Bentrok: tumpang tindih waktu pada aset sama]</text>
+
+  <!-- Note conflict -->
+  <rect x="250" y="390" width="410" height="42" class="note-box" />
+  <text x="260" y="407" class="note-text">Kondisi bentrok: mulaiBaru &lt; selesaiExisting &amp;&amp; selesaiBaru &gt; mulaiExisting</text>
+  <text x="260" y="423" class="note-text">Pengajuan DITOLAK secara atomik. Objek tidak disimpan.</text>
+
+  <line x1="225" y1="460" x2="60" y2="460" class="msg-err" marker-end="url(#arrow-err)" />
+  <text x="75" y="452" font-size="12" fill="#dc2626" font-family="'Consolas', monospace; font-weight:bold;">11: throw PeminjamanBentrokException("Bentrok pada aset " + kode)</text>
+
+  <!-- Divider line -->
+  <line x1="40" y1="495" x2="920" y2="495" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6,4" />
+
+  <!-- Branch 2: Skenario Sukses -->
+  <text x="50" y="515" class="alt-text">[else: Skenario Sukses: tidak ada bentrok jadwal]</text>
+
+  <rect x="250" y="530" width="410" height="35" class="note-box" />
+  <text x="260" y="546" class="note-text">Tidak ada tumpang tindih waktu pada aset yang sama.</text>
+  <text x="260" y="559" class="note-text">Pemeriksaan kuota laptop terpenuhi (jika aset berupa Laptop).</text>
+
+  <line x1="235" y1="655" x2="875" y2="655" class="msg-line" marker-end="url(#arrow)" />
+  <text x="250" y="648" class="msg-text">12: add(baru)</text>
+
+  <line x1="875" y1="675" x2="235" y2="675" class="msg-ret" marker-end="url(#arrow-ret)" />
+  <text x="250" y="670" class="msg-text">13: return true</text>
+
+  <line x1="225" y1="700" x2="60" y2="700" class="msg-ret" marker-end="url(#arrow-ret)" />
+  <text x="75" y="692" class="msg-text">14: return void (sukses terdaftar, status DIAJUKAN)</text>
+
+</svg>
